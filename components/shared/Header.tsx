@@ -9,9 +9,9 @@ const Header = () => {
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
+        <Link href="/" className="w-40">
           <Image 
-            src="/assets/images/logoPanela.svg" width={78} height={38}
+            src="/assets/images/PanelaLogo2.png" width={250} height={50}
             alt="Evently logo" 
           />
         </Link>
