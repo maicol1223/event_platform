@@ -11,6 +11,15 @@ export const headerLinks = [
     label: 'Mi Perfil',
     route: '/profile',
   },
+  {
+    label: 'Profesionales',
+    route: '/profesionales',
+  },
+  {
+    label: 'Recomendados',
+    route: '/recomendados',
+  },
+ 
 ]
 
 export const eventDefaultValues = {
