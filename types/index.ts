@@ -147,3 +147,45 @@ export type SearchParamProps = {
   params: { id: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
+
+// ====== PROFESSIONAL PARAMS
+export type CreateProfessionalParams = {
+  professional: {
+    name: string;
+    description: string;
+    imageUrl: string;
+    linkedinUrl?: string;
+  };
+  path: string;
+};
+
+export type UpdateProfessionalParams = {
+  professional: {
+    _id: string;
+    name: string;
+    description: string;
+    imageUrl: string;
+    linkedinUrl?: string;
+  };
+  path: string;
+};
+
+export type DeleteProfessionalParams = {
+  professionalId: string;
+  path: string;
+};
+
+export type GetAllProfessionalsParams = {
+  query?: string;
+  limit?: number;
+  page: number;
+};
+
+export type Professional = {
+  _id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  linkedinUrl?: string;
+};
+
