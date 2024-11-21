@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useTransition } from 'react'
-import { usePathname } from 'next/navigation'
-import Image from 'next/image'
+import { useTransition } from 'react';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 import {
   AlertDialog,
@@ -14,13 +14,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+} from '@/components/ui/alert-dialog';
 
-import { deleteProfessional } from '@/lib/actions/professional.actions' // Asegúrate de tener esta función
+import { deleteProfessional } from '@/lib/actions/professional.actions';
 
-export const DeleteConfirmation = ({ professionalId }: { professionalId: string }) => {
-  const pathname = usePathname()
-  let [isPending, startTransition] = useTransition()
+export const DeleteConfirmation = ({
+  professionalId,
+  onDelete,
+}: {
+  professionalId: string;
+  onDelete: (id: string) => void; // Callback para actualizar el estado
+}) => {
+  const pathname = usePathname();
+  let [isPending, startTransition] = useTransition();
 
   return (
     <AlertDialog>
@@ -42,7 +48,12 @@ export const DeleteConfirmation = ({ professionalId }: { professionalId: string 
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await deleteProfessional({ professionalId, path: pathname })
+                try {
+                  await deleteProfessional({ professionalId, path: pathname });
+                  onDelete(professionalId); // Llama al callback después de eliminar
+                } catch (error) {
+                  console.error('Error al eliminar profesional:', error);
+                }
               })
             }
           >
@@ -51,5 +62,5 @@ export const DeleteConfirmation = ({ professionalId }: { professionalId: string 
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};

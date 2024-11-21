@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema, model, models } from "mongoose";
 
 export interface IProfessional extends Document {
+  _id: string;  
   name: string;
   description: string;
   imageUrl: string;
